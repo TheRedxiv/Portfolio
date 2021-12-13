@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista1 Ejercicio 3</title>
+    <!--   El factorial de un número entero n es una operación matemática que
+    consiste en multiplicar todos los factores n x (n-1) x (n-2) x ... x 1. Así, el
+    factorial de 5 (escrito como 5!) es igual a: 5! = 5 x 4 x 3 x 2 x 1 = 120.
+    Utilizando la estructura for, crear un script que calcule el factorial de un
+    número entero.-->
+    <script>
+        //var numero = prompt("Dame un numero para hacerle el factoria");
+        function funcion(){
+            var output = Number(document.getElementById("input").value);
+            console.log("HOLAAAAA");
+            cadena = output + "!= " + output
+            for (let i=(output-1); i>0; i--){
+                output = output * i;
+                console.log(output)
+                cadena = cadena + " * " + i 
+            }
+            cadena = cadena + " = " + output 
+            document.getElementById("salida").innerHTML = cadena
+        }
+
+    </script>
+</head>
+<body>
+    <input type="number" id="input">
+    <button onclick="funcion()">Click aqui</button>
+    <br><br>
+    <div id="salida"></div>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!--Definir una función denominada Palindromo que determine si la cadena de texto que se le pasa como
+    parámetro es un palíndromo, es decir, si se lee de la misma forma desde la izquierda y desde la derecha.
+    Ejemplo de palíndromo: "La ruta nos aportó otro paso natural".-->
+    <script>
+        var cad = prompt("introduce aqui lo que quieras")
+        Palindromo(cad)
+        function Palindromo(cadena){
+            var cadenaf = cadena.replace(/[\s,;\.\?¿!¡:]/g,"");
+            //var cadenajunt = cadista.join("");
+            var cadenaf = cadenaf.toLowerCase();
+            cadenaf = cadenaf.replace(/á/g,"a").replace(/é/g,"e").replace(/í/g,"i").replace(/ó/g,"o").replace(/ú/g,"u");
+            console.log(cadenaf);
+            var tokena = cadenaf.length - 1
+            var tokenb = 0
+            var error = 0
+            while (tokena > tokenb && error == 0){
+                if (cadenaf[tokena] == cadenaf[tokenb]){
+                    tokena -=1
+                    tokenb +=1
+                    console.log(tokena + " " + tokenb)
+                }else{
+                    var error = 1
+                }
+            }
+            if (error == 0){
+                prompt("Palindromo")
+            }
+            else{
+                prompt("No Palindromo")
+            }
+        }
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

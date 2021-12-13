@@ -1,0 +1,28 @@
+{
+    "Empresa":{
+        "nombre":"HOYA",
+        "Direccion": "c/ madrid, 21",
+        "Telefono":" +77 4452154781",
+        "NIF":"057684321B"
+    },
+    "Cliente":{
+    "Numero": 18752,
+    "Nombre": "Opticalia Fernandez",
+    "Direccion": "C.Real 66",
+    "Telefono": "+34697351236",
+    "NIF": "123846750A"
+    },
+    "Elementos": [
+        {"nombre":"Gafas Graduadas",
+        "precio":99.50,
+        "cantidad":5},
+        {"nombre":"Lentillas",
+        "precio":80,
+        "cantidad": 6}
+    ],
+    "Factura":{
+        "IVA":0.1,
+        "Forma de pago": "Transferencia"
+    }
+
+}

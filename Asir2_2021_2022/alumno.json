@@ -1,0 +1,9 @@
+{
+    "nombre" : "Juan",
+    "apellidos": "Sanchez Sanchez",
+    "Comida":{
+        "Pollo" : true,
+        "cordero": false
+    },
+    "Modulos" : ["Par", "Iso", "GBD"]
+}

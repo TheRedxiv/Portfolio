@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ejemploAjax1</title>
+    <script>
+        window.onload = function(){
+            //1º Crear un objeto XMLHttprequest
+            const xhr = new XMLHttpRequest();
+            //console.log(xhr);
+            //2º controlar que hace cuando la peticion finalice
+            xhr.onreadystatechange = function(){
+                console.log(this.readyState)
+                console.log(this.responseText)
+                if (this.readyState == 4 && this.status == 200){
+                    var Datos = JSON.parse(this.responseText)
+                    document.getElementById("capa").innerHTML=Datos.campo1 + "<br>" + Datos.Campo2;
+                }
+            }
+
+            //3º abrir peticion
+            xhr.open("GET","datos.json");
+            //4º Enviar peticion
+            xhr.send()
+        }
+    </script>
+</head>
+<body>
+    <h1>prueba con Ajax</h1>
+    <div id="capa"></div>
+</body>
+</html>

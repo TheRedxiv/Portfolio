@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejemplo Ajax</title>
+    <style>
+        h1{
+            color: rebeccapurple;
+        }
+    </style>
+    <script>
+        function CargarDatos(){
+            var xhr = new XMLHttpRequest();
+            xhr.onreadystatechange = function(){
+                console.log(xhr.readyState)
+                console.log(xhr.status)
+                if (xhr.status == 200 && xhr.readyState == 4){ 
+                    //console.log(xhr.responseText);
+                    var objet = JSON.parse(xhr.responseText);
+                    //console.log(objet);
+                    //console.log(xhr)
+                    document.getElementById("kappa").innerHTML = objet.nombre + " " + objet.apellidos + " tiene " + objet.Modulos
+                }
+            };
+            xhr.open("GET", "alumno.json", true);
+            xhr.send();
+        }    
+    </script>
+</head>
+<body>
+
+    <h1>Datos de un alumno</h1>
+    <div id="kappa" ></div>
+    <button onclick="CargarDatos()">cargar datos</button>
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Primos</title>
+</head>
+<script>
+    function prinum(numero){
+        console.log(numero)
+        var mensaje = ""
+        var error = 0
+        if(numero == 1){
+            error = 1
+        }else if(numero ==2){}
+        else if (numero%2 == 0){
+            error = 1
+            mensaje = "Cazurro, como va a ser un numero par un numero primo"
+        }else{
+            console.log("hemos entrado")
+            var mitadalta = Math.ceil(numero/2)
+            for(let i=3; i*i<=numero; i=i+2){
+                console.log(i)
+                if(numero % i == 0){
+                    error = 1
+                }
+            }
+            console.log("hemos salido")
+        }
+        if (error == 1){
+            document.getElementById(`N${numero}`).style.color = "red"
+            document.getElementById("errores").value ++
+        }else{
+            document.getElementById(`N${numero}`).innerHTML = "__"
+        }
+    }
+</script>
+<body>
+    <h1>Numeros primos</h1>
+    <h1>Solo pulse los numeros primos</h1>
+    <script>
+        for(let i = 1; i <= 50; i++ ){
+            if(i < 10){
+                document.write(`<button id='N${i}' onclick='prinum(${i})'>0${i}</button>`)
+            }
+            if (i>=10){
+                document.write(`<button id='N${i}' onclick='prinum(${i})'>${i}</button>`)
+            }
+            if(i%10==0){
+                document.write("<br>")
+            }
+        }
+    </script>
+    <div id="null"></div>
+
+    <input style="display: none;" type="text" name="errores" id="errores" value="0">
+</body>
+</html>

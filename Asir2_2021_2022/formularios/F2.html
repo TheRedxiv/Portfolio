@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function validar(F){
+            // Primer control sobre el campo c1
+            if ( F.c1.value == "" ){
+                alert("Generic text field needs not to be empty")
+                return false
+            }
+        }
+
+    </script>
+</head>
+<body>
+    <!--multipart/form-data solo necesario si tenemos para recibir files-->
+    <form action="procesar_formulario_generico.php" method="POST" enctype="multipart/form-data"
+    onsubmit="return validar(this)">
+        Entrada de texto(generico)<input type="text" name="c1"> <br>
+        Area de texto: <br>
+        <textarea name="c2" cols="30" rows="10"> </textarea> <br> 
+        Checkbox (si o no)<input type="checkbox" name="c3" checked> <br>
+        botones de radio 
+        Fanta <input type="radio" name="c4" value="v2" checked> 
+        Cocacola <input type="radio" name="c4" value="v1">
+        Nestea <input type="radio" name="c4" value="v3">
+        <br>
+        color <input type="color" name="c5"><br>
+        Date <input type="date" name="c6"><br>
+        Password <input type="password" name="c7"><br>
+        menu seleccion <select name="c8" id="">
+            <option value="">-- Elegir opcion --</option>
+            <option value="vs1">amigo</option>
+            <option value="vs2" selected>comida</option>
+            <option value="vs3">dinero</option>
+        </select><br>
+        menu seleccion multiple <select name="c9[]" id="" multiple>
+            <option value="">-- Elegir opcion --</option>
+            <option value="vs1">amigo</option>
+            <option value="vs2">comida</option>
+            <option value="vs3">dinero</option>
+        </select><br>
+        Subida File <input type="file" name="c10"> <br>
+        <input type="submit">
+        
+    </form>
+</body>
+</html>

@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Canal Asir Mejorado</title>
+    <script>
+        window.onload = function(){
+            //Empiezo creando el AJAX (Lo llamo Ayax en referencia al personaje de la historia de troya)
+            var ayax = new XMLHttpRequest();
+            //Creo dentro del objeto de clase XMLHttprequest una funcion que se ejecuta cuando recive 
+            //la respuesta de forma satisfactoria
+            ayax.onload = function(){
+                //Siguiendo con los guinios Griegos llamo al documento Json Argonatura, Por Jason y los argonautas
+                var argonauta = JSON.parse(this.responseText)
+                //inicializo variables
+                var encabezado = ""
+                var Nprogramas = 0
+                // creo una lista con los dias de la semana para poder extraer de ella el nombre correspondiente 
+                // a la salida del getday
+                const semana = ["domingo","lunes","martes","miercoles","jueves","viernes","sabado"]
+                //Formateo la fecha al sistema imperial
+                var Dia = argonauta.F_Programacion
+                var DiaAmericano = Dia.slice(3,5)+"/"+Dia.slice(0,2)+"/"+Dia.slice(-4)
+                //console.log(new Date(DiaAmericano))
+                //Sacamos el dia de la semana apoyandonos en la lista creada
+                var DSemana = semana[new Date(DiaAmericano).getDay()]
+                encabezado = `Programacion del ${DSemana} ${argonauta.F_Programacion}`
+                //Consultamos la longitud del array que contiene los programas
+                Nprogramas = argonauta.Programas.length
+                //utilizamos las variables para mostrarlas en la pagina 
+                document.getElementById("Encabezado").innerHTML = encabezado
+                document.getElementById("Programas").innerHTML = `Hoy hay ${Nprogramas} programas`
+                //Empezamos con la tabla
+                var tabla = "<tr> <th>Hora Emision</th> <th>Programa</th> </tr>" 
+                for (var i=0; i < Nprogramas; i++){
+                    tabla += "<tr>"
+                    tabla += `<td> ${argonauta.Programas[i].Hora}</td>`
+                    //Aqui en las entradas de la tabla con el nombre empiezo a cocinar la funcion
+                    tabla += `<td onclick="generos(${i})"> ${argonauta.Programas[i].Nombre} </td>`
+                    tabla += "</tr>"
+                }
+                document.getElementById("Tabla").innerHTML = tabla
+                //Aqui aniadimos el html de generos empezamos creando un array vacio
+                var generos = []
+                //ahora recorreremos lo programas, mirando los generos, si hay alguno repetido simplemente no lo introducimos
+                for (var e=0; e < Nprogramas; e++){
+                    //creo un array con los generos de cada uno 
+                    var generostr = argonauta.Programas[e].Genero
+                    var generoArray = generostr.split(",")
+                    //Los recorro con un for
+                    for (var o = 0; o<generoArray.length; o++){
+                        //si el array de generos no incluye el que estamos comprobando lo introduce
+                        if (! generos.includes(generoArray[o])){
+                            generos.push(generoArray[o])
+                        }
+                    }
+                }
+                //Ahora creamos el html de generos para construir el select
+                for (var u=0;u<generos.length;u++){
+                    document.getElementById("generos").innerHTML += ` <option value="${generos[u]}">${generos[u].toUpperCase()}</option>`
+                }
+                //console.log(generos)
+                
+            }
+            ayax.open("GET", "canalASIR.json")
+            ayax.send()
+        }
+        function generos(N){
+            //Empiezo creando el AJAX (Lo llamo Ayax en referencia al personaje de la historia de troya)
+            var ayax = new XMLHttpRequest();
+            //Creo dentro del objeto de clase XMLHttprequest una funcion que se ejecuta cuando recive 
+            //la respuesta de forma satisfactoria
+            ayax.onload = function(){
+                //Siguiendo con los guinios Griegos llamo al documento Json Argonatura, Por Jason y los argonautas
+                var argonauta = JSON.parse(this.responseText)
+                //Como tengo el numero de entrada del programa puedo acceder a el directamente
+                var generostr = argonauta.Programas[N].Genero
+                var generoArray = generostr.split(",")
+                //console.log(generoArray)
+                alert(generoArray.join("/"))
+            }
+            ayax.open("GET", "canalASIR.json")
+            ayax.send()
+        }
+        function Actualiza(){
+            //Empiezo creando el AJAX (Lo llamo Ayax en referencia al personaje de la historia de troya)
+            var ayax = new XMLHttpRequest();
+            //Creo dentro del objeto de clase XMLHttprequest una funcion que se ejecuta cuando recive 
+            //la respuesta de forma satisfactoria
+            ayax.onload = function(){
+                //Siguiendo con los guinios Griegos llamo al documento Json Argonatura, Por Jason y los argonautas
+                var argonauta = JSON.parse(this.responseText)
+                //Empezamos con la tabla
+                var tabla = "<tr> <th>Hora Emision</th> <th>Programa</th> </tr>" 
+                //convierto e variable mas facimles de manejar los datos recibidos del htmla
+                var valor = document.getElementById("generos").value
+                //console.log(valor)
+                if (valor == "todos"){
+                    for (var i=0; i < argonauta.Programas.length; i++){
+                        tabla += "<tr>"
+                        tabla += `<td> ${argonauta.Programas[i].Hora}</td>`
+                        //Aqui en las entradas de la tabla con el nombre empiezo a cocinar la funcion
+                        tabla += `<td onclick="generos(${i})"> ${argonauta.Programas[i].Nombre} </td>`
+                        tabla += "</tr>"
+                        }
+                } else {
+                    for (var i=0; i < argonauta.Programas.length; i++){
+                        //console.log("He entrado a la tabla avanzada")
+                        //Ahora filtro mirando si dentro de la entrada Generos esta el genero
+                        if (argonauta.Programas[i].Genero.includes(valor)){
+                        tabla += "<tr>"
+                        tabla += `<td> ${argonauta.Programas[i].Hora}</td>`
+                        //Aqui en las entradas de la tabla con el nombre empiezo a cocinar la funcion
+                        tabla += `<td onclick="generos(${i})"> ${argonauta.Programas[i].Nombre} </td>`
+                        tabla += "</tr>"}
+                    }
+                }
+                document.getElementById("Tabla").innerHTML = tabla
+            }
+            ayax.open("GET", "canalASIR.json")
+            ayax.send()
+        }
+    </script>
+</head>
+<body>
+    <h1 id="Encabezado"></h1>
+    <h3 id="Programas"></h3>
+    <table id="Tabla" border="2"></table>
+    <select id="generos" onchange="Actualiza()">
+        <option value="todos">--Todos--</option>
+    </select>
+    </form>
+</body>
+</html>

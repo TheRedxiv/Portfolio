@@ -1,0 +1,50 @@
+[{
+	"_id": 3,
+	"Titulo": "noticia3",
+	"cuerpo": "Videojuegos",
+	"fecha": "2020/10/13",
+	"tags": ["Noticia", "videojuegos"]
+},
+{
+	"_id": 4,
+	"Titulo": "noticia4",
+	"cuerpo": "Videojuegos",
+	"fecha": "2020/10/14"
+},
+{
+	"_id": 5,
+	"Titulo": "noticia5",
+	"cuerpo": "Videojuegos",
+	"fecha": "2020/10/14"
+},
+{
+	"_id": 6,
+	"Titulo": "noticia6",
+	"cuerpo": "Videojuegos",
+	"fecha": "2020/10/16"
+},
+{
+	"_id": 7,
+	"Titulo": "noticia7",
+	"cuerpo": "Videojuegos",
+	"fecha": "2020/10/17"
+},
+{
+	"_id": 8,
+	"Titulo": "noticia8",
+	"cuerpo": "Videojuegos",
+	"fecha": "2020/10/18"
+},
+{
+	"_id": 9,
+	"Titulo": "noticia9",
+	"cuerpo": "Videojuegos",
+	"fecha": "2020/10/25"
+},
+{
+	"_id": 10,
+	"Titulo": "noticia10",
+	"cuerpo": "Videojuegos",
+	"fecha": "2020/10/30"
+}
+]

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista2 Ejercicio4</title>
+    <!--Objeto String.- Solicitar una cadena de texto en un campo input, presentar el número de caracteres que
+    contiene y presentar la propia cadena en cursiva, en itálica, en color rojo y en tachado. Aplicar el atributo
+    style que corresponda.-->
+    <script>
+        function formateo(){
+            var n = document.getElementById("texto").value
+            document.getElementById("longitud").innerHTML= n.length 
+            document.getElementById("cursiva").style.fontStyle = "oblique"
+            document.getElementById("cursiva").innerHTML= n
+            document.getElementById("italica").style.fontStyle = "italic"
+            document.getElementById("italica").innerHTML= n
+            document.getElementById("rojo").style.color = "red"
+            document.getElementById("rojo").innerHTML= n
+            document.getElementById("tachado").style.textDecoration = "line-through"
+            document.getElementById("tachado").innerHTML= n
+        }
+    </script>
+</head>
+<body>
+    Introduce tu texto<input type="text" id="texto"> <br>
+    <button onclick="formateo()">vamos a formatearlo</button>
+    <div id="longitud"></div>
+    <div id="cursiva"></div>
+    <div id="italica"></div>
+    <div id="rojo"></div>
+    <div id="tachado"></div>
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Olimpiadas</title>
+    <script>
+        function idioma(a){
+            const ayax = new XMLHttpRequest()
+            ayax.onload = function(){
+                console.log(this.responseText)
+                var argonautas = JSON.parse(this.responseText)
+                console.log(argonautas)
+                var listasalida = []
+                var solucion = ""
+                const dias = ['domingo','lunes','martes','miércoles','jueves','viernes','sábado'];
+                console.log(a)
+                if (a == "no"){
+                    document.getElementById("salida").innerHTML = argonautas
+                } else {
+                    for (let i = 0 ; i < argonautas.length ; i++){
+                        console.log("entro en el primer for con"+ i )
+                        console.log(argonautas[i])
+                        for (let e = 0 ; e < argonautas[i].participantes.length; e++){
+                            console.log("entro en el segundo for con"+ e)
+                            if (argonautas[i].participantes[e].idioma == a){
+                                console.log(a + e + i)
+                                solucion = `<b>${argonautas[i].participantes[e].nombre}</b> <br>`
+                                solucion += `${argonautas[i].nombre}<br>`
+                                var nfecha = new Date(argonautas[i].participantes[e].Fnacimiento).getDay();
+                                solucion += `${dias[nfecha]}<br>`
+                                listasalida.push(solucion)
+                            }
+                        }
+                    }
+               }
+               listasalida = listasalida.sort()
+               console.log(listasalida)
+               for (let o = 0; o < listasalida.length; o++){
+                    if (o == 0){
+                        document.getElementById("salida").innerHTML = listasalida[o]
+                    }else{
+                        document.getElementById("salida").innerHTML += listasalida[o]
+                    }
+                }
+            }
+
+            ayax.open("GET","olimpiadas.json")
+            ayax.send()
+        }
+    </script>
+</head>
+<body>
+    <div id="salida"></div>
+    <button onclick="idioma('ingles')">Ingles</button>
+    <button onclick="idioma('frances')">Frances</button>
+    <button onclick="idioma('aleman')">Aleman</button>
+</body>
+</html>

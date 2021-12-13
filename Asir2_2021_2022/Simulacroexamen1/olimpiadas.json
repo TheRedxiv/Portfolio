@@ -1,0 +1,80 @@
+[
+    {
+        "nombre":"bahia de cadiz",
+        "municipio":"Cadiz",
+        "bilingue":false,
+        "participantes":[
+            {
+                "nombre":"Luis martines",
+                "idioma":"ingles",
+                "Fnacimiento":"1997/08/03"
+            },
+            {
+                "nombre":"Maria Romero",
+                "idioma":"ingles",
+                "Fnacimiento":"2000/02/02"
+            },
+            {
+                "nombre":"Manuel Gonzalez",
+                "idioma":"frances",
+                "Fnacimiento":"1996/09/07"
+            },
+            {
+                "nombre":"Valentina Gomez",
+                "idioma":"frances",
+                "Fnacimiento":"1999/09/07"
+            }
+        ]
+    },
+    {
+        "nombre":"Romero Vargas",
+        "municipio":"Jerez",
+        "bilingue":false,
+        "participantes":[
+            {
+                "nombre":"Julio Lorenzo",
+                "idioma":"ingles",
+                "Fnacimiento":"1997/04/25"
+            },
+            {
+                "nombre":"Eva castanio",
+                "idioma":"frances",
+                "Fnacimiento":"2000/01/01"
+            },
+            {
+                "nombre":"Ana Tejerina",
+                "idioma":"frances",
+                "Fnacimiento":"2001/02/28"
+            }
+        ]
+    },
+    {
+        "nombre":"Kursaal",
+        "municipio":"Algeciras",
+        "bilingue":false,
+        "participantes":[
+            {
+                "nombre":"Moises Montiel",
+                "idioma":"aleman",
+                "Fnacimiento":"2002/09/04"
+            },
+            {
+                "nombre":"Herminia Sanchez",
+                "idioma":"aleman",
+                "Fnacimiento":"2000/09/11"
+            },
+            {
+                "nombre":"Inmaculada Sarrias",
+                "idioma":"ingles",
+                "Fnacimiento":"2001/03/27"
+            },
+            {
+                "nombre":"Jose Ramon Vilanova",
+                "idioma":"frances",
+                "Fnacimiento":"2000/10/15"
+            }
+        ]
+    }
+
+
+]

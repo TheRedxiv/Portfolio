@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista2 Ejercicio5</title>
+    <!--Definir una función denominada F1 que muestre información sobre una cadena de texto que se le pasa como
+    argumento. A partir de la cadena que se le pasa, la función determina si esa cadena está formada sólo por
+    mayúsculas, sólo por minúsculas o por una mezcla de ambas. Devolverá “mayúscula”, “minúscula” o “ambas”.
+    Recordad los métodos toUpperCase() y toLowerCase().-->
+    <script>
+        function F1(Cadena){
+            var MAY = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"]
+            var min = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"]
+            var mayus = 0
+            var minus = 0
+            console.log(Cadena)
+            console.log(Cadena[1])
+            for (let i = 0; i < Cadena.length; i++ ){
+                if (MAY.includes(Cadena[i])){
+                    mayus += 1
+                }
+                else if(min.includes(Cadena[i])) {
+                    minus += 1
+                }
+            }
+            console.log(mayus)
+            console.log(minus)
+            if( minus == 0 && mayus > 0 ){
+                document.getElementById("salida").innerHTML= "mayusculas"
+            }
+            else if( mayus == 0 && minus > 0 ){
+                document.getElementById("salida").innerHTML= "minusculas"
+            } 
+            else if( minus > 0 && mayus > 0 ){
+                document.getElementById("salida").innerHTML= "Ambos"
+            }
+            else{
+                document.getElementById("salida").innerHTML="no habia letras"
+            }
+        }
+    </script>
+</head>
+<body>
+    introduce aqui el texto <input type="text" id="entrada">
+    <button onclick="F1(document.getElementById('entrada').value)">lanzame</button>
+    <div id="salida"></div>
+</body>
+</html>

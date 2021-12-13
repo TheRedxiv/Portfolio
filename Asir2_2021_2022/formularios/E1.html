@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!--Ejercicio Formulario 1
+______________________
+
+Diseñar un formulario que cuente con los siguientes campos relativos a un usuario:
+
+- El nombre (no puede estar vacío).
+
+- La dirección de correo (debe ser válida).
+
+- Una contraseña (de al menos 8 caracteres y que cuente al menos con un dígito).
+
+- Repetición de la contraseña (debe coincidir con la anterior, obviamente).
+
+- Una operación matemática de suma entre dos números enteros de un dígito determinados 
+al azar (por ej. 5 + 3 = ?) con el fin de solicitar su resultado para evitar “bots”.
+
+- Una casilla de verificación de “Acepto las condiciones” inicialmente desactivada. 
+Hasta que esta opción no se verifique no se habilitará el botón de envío. 
+ 
+- Un botón de envío con el texto “Crear cuenta”.
+
+Los elementos irán validándose de forma individual, de modo que si no es correcto 
+aparecerá un texto en rojo indicando el error y el campo erróneo tomará el foco.-->
+<script>
+    function ControlBoton(acept){
+        document.getElementById("crear").disabled = !acept.checked
+        //if (acept.checked){
+        //    document.getElementById("crear").disabled = false
+        //}else{
+        //    document.getElementById("crear").disabled = true
+        //}
+    }
+
+</script>
+</head>
+<body>
+    <form action="16679.jpg" method="POST" onsubmit="return validar(this)">
+        Nombre* <input type="text" name="nombre" id="Nombre"><br>
+        Email* <input type="text" name="email" id="email"><br>
+        Pass* <input type="password" name="pass" id="pass"><br>
+        Pass confirmation* <input type="password" name="passc" id="passc"><br>
+        catcha <span id="X"></span> + <span id="Y"></span> = <input name="Z" id="Z" type="text" maxlength="2"><br>
+        Acepto las condiciones <input type="checkbox" name="acept" onclick="ControlBoton(this)"><br>
+        <input type="submit" name="submit" id="crear" value="crear cuenta" disabled>
+        <div id="null" style="color: red;"></div>
+    </form>
+    <script>
+        //setInterval(function(){
+        var X = Math.floor(Math.random() * 10)
+        console.log(X)
+        var Y = Math.floor(Math.random() * 10)
+        console.log(Y)
+        var Z = X + Y
+        document.getElementById("X").innerHTML=X
+        document.getElementById("Y").innerHTML=Y//},100000)
+        function validar(F){
+            if (/\S/.test(F.nombre.value) == false){
+                document.getElementById("null").innerHTML = "Error el nombre no puede estar vacio"
+                F.nombre.focus()
+                document.getElementById("pass").value = ""
+                document.getElementById("passc").value = ""
+                return false
+            } else if(/^\w+([\.\+\-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,4})+$/.test(F.email.value) == false){
+                document.getElementById("null").innerHTML = "Error no es una direccion de Email valida"
+                F.email.focus()
+                document.getElementById("pass").value = ""
+                document.getElementById("passc").value = ""
+                return false
+            }else if( F.pass.value.length < 8 || F.pass.value.search(/\d/) == -1){
+                document.getElementById("null").innerHTML = "Error no es una pass valida"
+                F.pass.focus()
+                document.getElementById("pass").value = ""
+                document.getElementById("passc").value = ""
+                return false
+            }else if (F.pass.value != F.passc.value){
+                document.getElementById("null").innerHTML = "Error no coinciden las contraseñas"
+                F.pass.focus()
+                document.getElementById("pass").value = ""
+                document.getElementById("passc").value = ""
+                return false
+            }else if (F.Z.value != Z ){
+                document.getElementById("null").innerHTML = "¿Estas seguro que eres humano?"
+                F.Z.focus()
+                document.getElementById("pass").value = ""
+                document.getElementById("passc").value = ""
+                return false
+            }else{
+            return true
+            }
+            return false
+        }
+    </script>
+</body>
+</html>

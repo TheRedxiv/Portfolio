@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FernandezCuesta_JoseManuel_EjercicioMinitest</title>
+</head>
+<!--Realiza una página HTML que presente un breve test de preguntas sobre SQL que contenga 4 preguntas de diferente tipo:
+
+1. Una pregunta con más de una respuesta posible: (varios checkbox)
+
+2. Una pregunta con una sola respuesta de entre varias: (botones de radio excluyentes)
+
+3. Una pregunta con una sola respuesta a elegir de una lista (lista desplegable simple)
+
+4. Una pregunta con una sola respuesta que se solicita al usuario (campo de texto)
+
+La página mostrará un botón Corregir tras la pulsación del cual se mostrará el porcentaje de aciertos y el número de intentos realizados. Tras el primer intento, el botón aparecerá como "Reintentar".
+
+Cuando se hayan acertado todas las preguntas (100% de aciertos) el botón de Corrección se deshabilitará.-->
+<script>
+    function Valida(F){
+        console.log(F.P4.value)
+        if(F.Respuesta.value == "Corregir" || F.Respuesta.value == "Reintentar" ){
+            F.intentos.value++
+            var token = 0
+            //console.log("Estoy entrando por validar")
+            if(!F.P1A.checked && !F.P1C.checked ){
+                if(F.P1B.checked){
+                    token++
+                    //console.log(token)
+                }
+                if(F.P1D.checked){
+                    token++
+                }
+            }
+            if(F.P2.value == "P2R3"){
+                token++
+            }
+            if(F.P3.value == "P3R1"){
+                token++
+            }
+            if(F.P4.value == "WHERE"){
+                token++
+            }
+            document.getElementById("salidatxt").innerHTML = ` en tu intento numero ${F.intentos.value} has acertado ${token} de 5, un ${token*20}%`
+            if(token == 5 ){
+                F.Respuesta.value = "Felicidades"
+                F.Respuesta.disabled = true //Easter Egg si se comenta esta linea
+                return false
+            }else{
+                F.Respuesta.value = "Reintentar"
+                console.log(token)
+                return false
+            }
+        }
+
+        if(F.Respuesta.value == "Felicidades"){
+            return true
+        }
+        return false
+    }
+</script>
+<body>
+    <form action="gatoyak.jpg" method="POST" onsubmit="return Valida(this)">
+    Pregunta1: ¿Cuales de estos titulos pertenecen a la saga "El señor de los anillos"? <br>
+    MongoDB. <input type="checkbox" class="Check" name="P1A" ><br>
+    MySQL. <input type="checkbox" class="Check" name="P1B" ><br>
+    Apache Cassandra. <input type="checkbox" class="Check" name="P1C" ><br>
+    DB2. <input type="checkbox" class="Check" name="P1D" ><br>
+    <br>
+    Pregunta2 ¿Que significa SQL? <br>
+    Simplest Query Language <input type="radio" class="Check" name="P2" value="P2R1"><br>
+    Super Queue Lenght <input type="radio" class="Check" name="P2" value="P2R2"><br>
+    Structured Query Language <input type="radio" class="Check" name="P2" value="P2R3"><br>
+    Super Queen Language <input type="radio" class="Check" name="P2" value="P2R4"><br>
+    <br>
+    Pregunta 3: cual de estas es la orden de consulta <br> <select name="P3" id="">
+        <option value="P3R0">--elige--</option>
+        <option value="P3R1">SELECT</option>
+        <option value="P3R2">FIND</option>
+        <option value="P3R3">WHO</option>
+        <option value="P3R4">WHERE</option>
+    </select><br>
+    <br>
+    pregunta4 <br>
+    No te olvides de poner el _____ en el DELETE FROM<input type="text" name="P4" value="P4"><br>
+
+    <input type="submit" name="Respuesta" value="Corregir">
+    <input style="display: none;" type="text" name="intentos" id="intentos" value="0">
+
+    </form>
+
+    
+    <p id="salidatxt" style="color: red;"></p>
+</body>
+</html>

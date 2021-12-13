@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista2 Ejercicio2</title>
+    <!--. Objeto Math.- Calcular el área de un círculo tras solicitar el radio desde un cuadro de diálogo (prompt). El área
+    del círculo se calcula con la fórmula π r².-->
+    <style>
+        #salida2{
+            -moz-border-radius: 50%;
+            -webkit-border-radius: 50%;
+            border-radius: 50%;
+            background: #5cb85c;
+        }
+    </style>
+</head>
+<body>
+    <div id="salida"></div>
+    <div id="salida2"></div>
+    <script>
+        var r = Number(prompt("Dame el radio de la circuferencia"))
+        var Area = Math.PI*r*r
+        console.log(Area)
+        //document.write(Area)
+        document.getElementById("salida").innerHTML=Area
+        document.getElementById("salida2").style.height=r*2
+        document.getElementById("salida2").style.weight=r*2
+    </script>
+</body>
+</html>

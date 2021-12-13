@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista1 Ejercicio 4</title>
+    <!--   Leer una cadena de texto mediante el método prompt() y generar un
+    array con las palabras que contiene. Posteriormente, mostrar la siguiente
+    información:
+    • Número de palabras
+    • Primera palabra y última palabra
+    • Las palabras colocadas en orden inverso
+    • Las palabras ordenadas de la a la z
+    • Las palabras ordenadas de la z a la a.-->
+    <script>
+        var input = prompt("Introduce una frase")
+        var palabras = [ ]
+        var palabra = ""
+        for (i in input){
+            if ( input[i] != " "){
+                palabra = palabra + input[i]
+
+            }else{
+                palabras.push(palabra)
+                palabra = ""
+            }
+        }
+        palabras.push(palabra)
+        document.write(palabras.join(" ") + "<br/>") 
+        document.write("Numero de palabras:" + palabras.length+ "<br/>")
+        document.write("La primera palabra es " + palabras[0] + " la ultima es " + palabras[(palabras.length - 1)]+ "<br/>")
+        document.write(palabras.sort().join(" ")+ "<br/>")
+        ordena = palabras.sort()
+        document.write(palabras.reverse().join(" ")+ "<br/>")
+        //Extra: aclaración de sort !!!
+        var numeros = [14,5,27,1,100,36];
+        //ordenacion descendente
+        console.log(numeros.sort(function(a,b){
+            return b-a
+        }))
+        //ordenacion ascendente
+        console.log(numeros.sort(function(a,b){
+            return a-b
+        }))
+
+        var personas = [
+            {"nombre" : "Juana", "apellidos" : "sanchez", "Edad" : 56},
+            {"nombre" : "Jose", "apellidos" : "Fernandez", "Edad" : 23},
+            {"nombre" : "dani", "apellidos" : "jimenez", "Edad" : 29}
+        ]
+        console.log(personas[1].apellidos)
+        console.log(personas.sort(function(a,b){
+            return a.Edad - b.Edad
+        }))
+
+    </script>
+</head>
+<body>
+</body>
+</html>

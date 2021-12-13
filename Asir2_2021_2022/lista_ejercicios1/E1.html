@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista 1 ejercicio 1</title>
+    <!-- 1. Solicitar un número y presentar su tabla de multiplicar. -->
+    <script>
+        // Declaramos una variable para almacenar el numero solicitado //
+        //var numero ;
+        //numero = prompt("Introduzcca un numero, por favor","");
+        //console.log(numero);
+        function tabla(){
+            var numero = document.getElementById("base").value;
+            var tablae = [1,2,3,4,5,6,7,8,9,10];
+            var output = "";
+            for (i in tablae) {
+                output = output + numero + " x " + tablae[i] + " = " + (tablae[i] * numero) + "<br/>";
+            }
+            document.getElementById("vuelva").innerHTML= output
+        }
+    </script>
+</head>
+<body>
+    <!-- lo haremos mas pro -->
+    <h1>tabla multiplicar</h1>
+    <input type="number" min="1" max="10" id="base">
+    <button onclick="tabla()"> mostrar tabla </button>
+    <br>
+    <br>
+    <div id="vuelva"></div>
+</body>
+</html>

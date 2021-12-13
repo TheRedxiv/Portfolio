@@ -1,0 +1,40 @@
+[{
+    "nombre_usuario": "Frank_blog",
+    "nombre": "Frank",
+    "cuenta_twitter": "Frank_USE",
+    "descripcion": "blogger aficionado",
+    "telefono1": 73128989,
+    "telefono2": 840932834,
+    "calle": "Av. de los Castros",
+    "numero": 2256,
+    "cp": 39005,
+    "ciudad": "Santander",
+    "noticias": ["1"]
+    },
+    {
+    "nombre_usuario": "Peter_blog",
+    "nombre": "Peter",
+    "cuenta_twitter": "Pete",
+    "descripcion": "blogger aficionado",
+    "telefono1": 808080,
+    "telefono2": 4323424,
+    "calle": "Av. de los Castros",
+    "numero": 289,
+    "cp": 39005,
+    "ciudad": "Santander",
+    "noticias": ["2"]
+    },
+    {
+    "nombre_usuario": "Frank_blog",
+    "nombre": "Frank",
+    "cuenta_twitter": "Frank_USA",
+    "descripcion": "blogger aficionado",
+    "telefono1": 73128989,
+    "telefono2": 111111111,
+    "calle": "Av. de los Castros",
+    "numero": 2256,
+    "cp": 39005,
+    "ciudad": "Santander",
+    "noticias": ["3"]
+    }
+]

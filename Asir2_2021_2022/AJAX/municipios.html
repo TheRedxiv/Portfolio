@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title><script>
+        window.onload = function(){
+            const xhr = new XMLHttpRequest();
+            xhr.onreadystatechange = function(){
+                // console.log(this.readyState)
+                // console.log(this.responseText)
+                if (this.readyState == 4 && this.status == 200){
+                    var lista = JSON.parse(this.responseText)
+                    // console.log(lista.length)
+                    var salida = " "
+                    for (let i = 0; i < lista.length; i++){
+                    salida=salida + `<option value="${lista[i]}"> ${lista[i]} </option>`;
+                    }
+                    document.getElementById("municipios").innerHTML+=salida
+                }
+            }
+            xhr.open("GET","Cadiz.json");
+            xhr.send()
+        }
+        function redirec(){
+            // console.log(document.getElementById("municipios").value)
+            document.getElementById("go").action=`https://es.wikipedia.org/wiki/${document.getElementById("municipios").value}`
+        }
+        </script>
+</head>
+<body>
+    <h1>municipios</h1>
+    <form id="go" target="blank" onsubmit="return true" action=>
+        <select name="municipios" id="municipios">
+            <option value="0">-- Seleccione Municipio --</option>
+        
+        </select>
+        <br>
+        <input onclick="redirec()" type="submit" value="Buscar en wikipedia" />
+    </form>
+</body>
+</html>

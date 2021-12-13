@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista1 Ejercicio 6</title>
+    <!--Escribe un script que contenga un párrafo y cinco botones. Cada uno de
+    los botones debe tener como etiqueta el nombre de un color y al pulsarlo
+    pondrá el color del párrafo del mismo color que indica.-->
+        <script>
+            function cambio(entrada){
+                document.getElementById("salida").style.color = entrada
+                document.getElementById("salida").style.display = "default"
+            }
+        </script>
+</head>
+<body>
+    <p id="salida">cambiame el color</p>
+    <button onclick="cambio('red')">rojo</button>
+    <button onclick="cambio('green')">verde</button>
+    <button onclick="cambio('blue')">azul</button>
+    <button onclick="cambio('purple')">morado</button>
+    <button onclick="cambio('brown')">marron</button>
+    <button onclick="document.getElementById('salida').style.display='none'">ocultame</button>
+</body>
+</html>

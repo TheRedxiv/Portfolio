@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario</title>
+    <style>
+        span{
+            color:red
+        }
+    </style>
+    <script>
+        function form(){
+            console.log(this.pass.value)
+            var error = 0
+            console.log(this.sesion.value);
+            if (this.sesion.value == "elige"){
+                error += 1
+                document.getElementById("error0").innerHTML = "elige una de las opciones"
+            }else{
+                document.getElementById("error0").innerHTML = ""
+            }
+            if (! /^[A-Z](?=.*\w)(?=.*\d)[A-Za-z\d]{5,}/.test(this.pass.value)) {
+                console.log("gracias")
+                error +=1
+                document.getElementById("error").innerHTML = "la contrasenia no cumple"
+            }else{
+                document.getElementById("error").innerHTML = ""
+            }
+            if (this.pass.value != this.pass2.value){
+                error +=1
+                document.getElementById("error2").innerHTML = "Las contrasenias no coinciden"
+            }else{
+                document.getElementById("error2").innerHTML = ""
+            }
+            var comp = new RegExp(this.pass.value)
+            console.log(comp)
+            if (comp.test(this.indicio.value)){
+                error += 1
+                document.getElementById("error3").innerHTML = "El indicio no debe contener la contrasenia"
+                
+            } else {
+                document.getElementById("error3").innerHTML = ""
+            }
+            console.log(error)
+            if (error == 0){
+                return true;
+            }else{
+                return false;
+            }
+        }
+    </script>
+</head>
+<body>
+    <form action="cambia_cuenta.php" method="POST" onsubmit="return form()">
+        <h1>Inicio sesion</h1>
+        cuando quieres que win te pida credenciales<select name="sesion" id="sesion">
+            <option value="elige">---elige una opcion---</option>
+            <option value="cuando el pc se activa tras suspension">cuando el pc se activa tras suspension</option>
+            <option value="nunca">nunca</option>
+        </select>
+        <span id="error0"></span>
+        <h1>Contrasenia</h1>
+        pass<input type="text" name="pass" id="pass"><span id="error"></span><br>
+        confirma pass<input type="text" name="pass2" id="pass2"> <span name="error2" id="error2"></span><br>
+        indicio pass<textarea id="indicio" rows="2" size=32 name="indicio" ></textarea> <span id="error3"></span>
+        <h1>Privacidad</h1>
+        <input type="radio" name="privacidad" id="privacidad"> mostrar detalles de cuentas en la pantalla <br>
+        <input type="submit" value="enviame" > 
+    </form>
+</body>
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>muestro a los alumnos ordenados alfabeticamente</title>
+    <script>
+        window.onload = mostrar
+        function mostrar(){
+            const ayax = new XMLHttpRequest()
+            ayax.onload = function(){
+                var argonauta = JSON.parse(this.responseText)
+                console.log(argonauta)
+                console.log(argonauta[0]["apellidos"])
+                const claves = Object.keys(argonauta[0])
+                claves.push("borrar")
+                console.log(claves)
+                var tabla = "<tr>" ;
+                for (let e = 0; e < (claves.length-1); e++){
+                    if (claves[e] == "nacimiento"){
+                        tabla += "<th> edad </th>"
+                    } else if( e == 3 ){
+                        tabla += "<th> borrar </th>"
+                    }else{
+                        tabla += `<th> ${claves[e]} </th>`
+                    }
+                }
+                tabla += "</tr>" ;                
+                for (let i = 0; i < argonauta.length; i++){
+                    tabla += "<tr>" ;
+                    for (let e = 0; e < (claves.length-1); e++){
+                        if (claves[e] == "nacimiento"){
+                            var anio = new Date(argonauta[i][claves[e]])
+                            var anioHoy = new Date().getFullYear()
+                            anio = anio.getFullYear()
+                            edad = anioHoy - anio
+                            tabla += `<td> ${edad} </td>`
+                        }else if (e == 3){
+                            tabla += `<td><button onclick="eliminar(${argonauta[i].id})">borrar</button></td>`
+                        }                        
+                        else{
+                            tabla += `<td>${argonauta[i][claves[e]]}</td>`//forma de acceder alternativa
+                        }
+                    }
+                    console.log(tabla)
+                    tabla += "</tr>" ;
+                }
+                document.getElementById("tabla").innerHTML = tabla
+            }
+            ayax.open("get", "http://127.0.0.1:3000/alumnos?_sort=apellidos")
+            ayax.send() 
+        }
+        function enviar(){
+                const ayax =new XMLHttpRequest()
+                ayax.open("POST", "http://127.0.0.1:3000/alumnos")
+                ayax.setRequestHeader("Content-type", "application/x-www-form-urlencoded")
+                ayax.send(`nombre=${document.getElementById("nombre").value}&apellidos=${document.getElementById("apellidos").value}&nacimiento=${document.getElementById("nacimiento").value}`)
+                mostrar()
+            }
+        function eliminar(id){
+            var ayax = new XMLHttpRequest()
+            ayax.open("DELETE","http://127.0.0.1:3000/alumnos/"+id)
+            ayax.send()
+            mostrar()
+        }
+    </script>
+</head>
+<body>
+    <table id="tabla">
+    </table>
+    <!--<button onclick="mostrar()">mostrar</button>-->
+    <h2>añadir</h2>
+    Nombre<input type="text" name="nombre" id="nombre"><br>
+    Apellidos<input type="text" name="apellidos" id="apellidos"><br>
+    Nacimiento<input type="date" name="nacimiento" id="nacimiento"><br>
+    <button onclick="enviar()">añadir registro</button>
+</body>
+</html>

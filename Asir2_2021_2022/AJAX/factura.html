@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Datos de factura</title>
+    <script>
+        window.onload = function(){
+            const ayax =new XMLHttpRequest();
+            ayax.onload = function(){
+                console.log(JSON.parse(this.responseText))
+                var argonauta = JSON.parse(this.responseText)
+                console.log(argonauta.Elementos)
+                var numeroelem = 0
+                var precio = 0
+                for (let i = 0 ; i < argonauta.Elementos.length; i++){
+                    numeroelem += argonauta.Elementos[i].cantidad
+                    console.log(numeroelem)
+                }
+                for (let i = 0 ; i < argonauta.Elementos.length; i++){
+                    precio += argonauta.Elementos[i].precio * argonauta.Elementos[i].cantidad 
+                    console.log(precio)
+                }
+                document.getElementById("elementos").innerHTML += numeroelem
+                document.getElementById("precio").innerHTML += precio + (precio * argonauta.Factura.IVA)
+                document.getElementById("NIF").innerHTML += argonauta.Cliente.NIF
+            }
+            ayax.open("GET","factura.json?a="+Math.random());
+            ayax.send()
+        }
+    </script>
+</head>
+<body>
+    <p id="elementos">El numero de elementos de esta factura =</p>
+    <p id="NIF">El NIF del cliente de la factura es </p>
+    <p id="precio">El precio total de los ariculos de la factura: </p>
+</body>
+</html>

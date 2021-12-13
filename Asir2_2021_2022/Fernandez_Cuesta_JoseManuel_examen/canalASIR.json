@@ -1,0 +1,32 @@
+{
+    "Canal":"CanalAsir",
+    "F_Programacion":"10/11/2021",
+    "Sede":"Jerez de la Frontera",
+    "Programas":[
+        {
+            "Nombre":"Telediario1",
+            "Hora":"16:00",
+            "Genero":"Informativo"
+        },
+        {
+            "Nombre":"Documental1",
+            "Hora":"17:00",
+            "Genero":"Documental,Historia"
+        },
+        {
+            "Nombre":"Pelicula1",
+            "Hora":"17:45",
+            "Genero":"Pelicula,Suspense,Drama,Historia"
+        },
+        {
+            "Nombre":"Pelicula2",
+            "Hora":"19:45",
+            "Genero":"Pelicula,Comedia"
+        },
+        {
+            "Nombre":"Telediario2",
+            "Hora":"22:00",
+            "Genero":"Informativo"
+        }
+    ]
+}

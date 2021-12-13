@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista2 Ejercicio1</title>
+    <!--Objeto Date.- Presentar en todo momento cuánto tiempo falta para llegar al momento de comernos las uvas
+    en fin de año expresado en milisegundos. Buscar el método adecuado. Investigar, también, el método
+    setInterval() del objeto window.-->
+    <script>
+        function anionuevo(){
+            setInterval(function(){
+            var inicio = new Date();
+            console.log(inicio)
+            var anionuevo = inicio.getFullYear()+1;
+            console.log(anionuevo)
+            var fin = new Date(anionuevo,0)
+            console.log(fin)
+            var anionuevo = inicio.getFullYear();
+            document.getElementById("salida").innerHTML = fin.getTime() - inicio.getTime();}, 100 )
+        }
+    </script>
+</head>
+<body>
+    <div id="salida"></div>
+    <button onclick="anionuevo()">aqui</button>
+    
+</body>
+</html>

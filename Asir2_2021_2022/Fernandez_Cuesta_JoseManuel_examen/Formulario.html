@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario NIF JoseManuelFernandezCuesta</title>
+    <style>
+        span{
+            color: red;
+        }
+    </style>
+    <script>
+    function form(){
+        //lista de letras para final de NIF
+        var letras = ["T", "R", "W", "A", "G", "M", "Y", "F", "P", "D", "X", "B", "N", "J", "Z", "S", "Q", "V", "H", "L", "C", "K", "E"]
+        //comprobamos si no esta vacio
+        if (this.NIF.value == ""){
+            //esta vacio
+            document.getElementById("uno").innerHTML = "El campo NIF es obligatorio";
+            return false;
+        }else{
+            document.getElementById("uno").innerHTML = ""
+        }
+        //comprobamos si se cumplen los requisitos para que sea un NIF
+        if (! /^\d{8,8}[A-Z]$/g.test(this.NIF.value)){
+            //el Nif tiene un formato no adecuado
+            document.getElementById("uno").innerHTML = "El campo NIF debe estar formado por 8 dígiros y una letra mayúscula";
+            return false;
+        } else {
+            document.getElementById("uno").innerHTML = "";
+        }
+        //Manupulamos el string para sacar los numeros 
+        var numDNI=Number(this.NIF.value.slice(0,-1))
+        // dividimos el numero entre 23
+        var resto = numDNI % 23
+        //el resto deberia coincidir con la letra que le corresponde
+        var letra = letras[resto]
+        //juntamos los numeros con la letra correspondiente para crear el NIF adecuado
+        var DNI = numDNI+letra
+        //console.log(DNI)
+        //Comparamos como deberia ser el dni contra como esta escrito por el ususario
+        if (DNI != this.NIF.value){
+            document.getElementById("uno").innerHTML = "La letra del NIF no corresponde al DNI";
+            return false
+        }
+        return true
+    }
+    function Limpia(){
+        document.getElementById("uno").innerHTML=""
+    }
+    </script>
+</head>
+<body>
+    <form action="Unapaginacualesquiera.php" method="POST" onsubmit="return form()">
+    <b>NIF</b><input type="text" name="NIF" id="NIF"><span id="uno"></span> <br>
+    <input type="submit" value="ENVIAR"><input type="reset" name="" id="" value="BORRAR" onclick="Limpia()">
+    </form>
+</body>
+</html>
